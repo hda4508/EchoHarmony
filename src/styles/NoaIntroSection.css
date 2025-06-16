@@ -1,0 +1,224 @@
+/* ─── 글로벌 리셋 ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+
+/* ─── 컨테이너: 부드러운 원 스크롤 + 스냅 ─── */
+.landing {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background: #000; /* 전체 기본 배경 */
+}
+
+/* ─── 공통 스냅 섹션 ─── */
+.landing-main,
+.sub-main,
+.card-section,
+.model-section,
+.noa-intro-section,
+.noa-scroll-section,
+.mini-game-wrapper,
+.video {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* ─── 노아 스크롤 전환 섹션 ─── */
+.noa-scroll-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.noa-scroll-inner {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+/* 컷인 SVG */
+/* .noa-cutin-svg {
+  display: block;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+} */
+
+/* 텍스트 반원 전환 래퍼 */
+.noa-text-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  margin-bottom: 60px;
+}
+
+.noa-text-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%) translateY(60px) rotate(20deg);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  margin-top: 50px;
+}
+
+.noa-text-slide h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.noa-text-slide p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.noa-text-slide.active {
+  transform: translateX(0) translateY(0) rotate(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.noa-text-slide.exit-left {
+  transform: translateX(-100%) translateY(60px) rotate(-20deg);
+  opacity: 0;
+  z-index: 1;
+}
+
+.noa-text-slide.exit-right {
+  transform: translateX(100%) translateY(60px) rotate(20deg);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* 모델 애니메이션 */
+.noa-model-drop {
+  width: 400px;
+  height: 400px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+  margin-top: 150px;
+  filter: drop-shadow(0 0px 40px rgba(52, 103, 179, 0.3)); /* ✅ 그림자 추가 */
+}
+
+.noa-model-drop.drop-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .noa-model-drop {
+    width: 280px;
+    height: 280px;
+  }
+
+  .noa-text-wrapper {
+    height: auto;
+    min-height: 140px;
+  }
+}
+
+/* ─── 고정 헤더 ─── */
+.landing-header {
+  position: fixed;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.music-icon {
+  font-size: 2.5rem;
+  color: #fff;
+  filter: drop-shadow(0 0 8px #fff);
+}
+
+.top-nav button {
+  margin-left: 12px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.top-nav button:hover {
+  background: #ffffff;
+  color: #000;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: #000;
+  color: #fff;
+  height: auto;
+  scroll-snap-align: none !important;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-right {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-text {
+  font-weight: bold;
+  margin-right: 6px;
+}

@@ -1,0 +1,64 @@
+/* Division.css */
+
+.chapter-section {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.chapter.half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: white;
+}
+
+.chapter.half::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 반투명 어두운 오버레이 */
+  z-index: 0;
+}
+
+.chapter h3,
+.chapter p {
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* 텍스트 가독성 향상 */
+}
+
+.chapter h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.chapter p {
+  font-size: 1rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+  .chapter-section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .chapter.half {
+    padding: 40px 24px;
+  }
+}

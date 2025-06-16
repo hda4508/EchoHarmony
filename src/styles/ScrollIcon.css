@@ -1,0 +1,64 @@
+/* src/components/ScrollIcon.css */
+
+/* 1) 컨테이너 기본 설정 */
+.scroll-icon {
+  position: absolute;       /* 부모(.landing-main) 기준으로 절대 위치 설정 */
+  bottom: -40px;             /* 부모(.landing-main) 바닥으로부터 50px 위쪽 */
+  left: 50%;                /* 부모 폭의 가로 중앙에 배치 */
+  transform: translateX(-50%);
+  width: 60px;              /* 필요한 대로 너비 조정 (예: 50px) */
+  height: 160px;            /* U자형+화살표 합친 높이 (예: 160px) */
+}
+
+/* 2) 상단이 둥근 U자형 틀 */
+.u-shape {
+  position: absolute;
+  top: 0;                    /* 부모(.scroll-icon) 맨 위에서 시작 */
+  left: 50%;                 /* 부모 너비의 중심에 맞춤 */
+  transform: translateX(-50%);
+  width: 80px;               /* 반원 지름 = 컨테이너 너비 */
+  height: 120px;             /* 반원 부분(약 25px) + 세로선(약 95px) */
+  border-top: 2px solid #b3b3b3;
+  border-right: 2px solid #b3b3b3;
+  border-left: 2px solid #b3b3b3;
+  border-radius: 25px 25px 0 0; /* 위쪽 양끝을 반원으로 둥글게 */
+  /* border-left 와 border-bottom 은 기본 none */
+}
+
+/* 3) 화살표: 세로 선 + 화살촉 */
+.arrow {
+  position: absolute;
+  top: 30px;             /* U자형 내부에서 내려온 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 100px;
+}
+
+.arrow-line {
+  position: absolute;
+  top: 0;
+  left: -1px;            /* 두께 2px의 반만큼 보정 */
+  width: 2px;
+  height: 70px;          /* 화살촉 바로 위까지 */
+  background-color: #b3b3b3;
+}
+
+.arrow-head {
+  position: absolute;
+  top: 70px;             /* 화살축 끝 바로 아래 */
+  left: 1px;            /* 화살축 중앙 맞춤 */
+  width: 2px;
+  height: 20px;
+  background-color: #b3b3b3;
+}
+
+.arrow-head.left {
+  transform: rotate(-130deg);
+  transform-origin: top left;
+}
+
+.arrow-head.right {
+  transform: rotate(130deg);
+  transform-origin: top left;
+}
